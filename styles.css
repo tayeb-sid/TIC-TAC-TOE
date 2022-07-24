@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  position: relative;
+  background: linear-gradient(to left, red, blue);
+}
+#board {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.835);
+}
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(255, 231, 16, 0.835);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+#cell1,
+#cell2,
+#cell3 {
+  border-top: none;
+}
+#cell1,
+#cell4,
+#cell7 {
+  border-left: none;
+}
+#cell7,
+#cell8,
+#cell9 {
+  border-bottom: none;
+}
+#cell3,
+#cell6,
+#cell9 {
+  border-right: none;
+}
+.message-container {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  gap: 30px;
+  display: grid;
+  place-content: center;
+}
+#message {
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-size: 5vh;
+}
+#restartBtn {
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+}
+#restartBtn:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  font-weight: bold;
+  background-color: greenyellow;
+  transition: all 200ms ease-out;
+}
+
+.hide {
+  display: none;
+}
+
+/* .barreX {
+  height: 90%;
+  width: 12%;
+  border-radius: 2px;
+  background-color: black;
+  position: absolute;
+}
+.barre1 {
+  transform: rotate(45deg);
+}
+.barre2 {
+  transform: rotate(-45deg);
+}
+
+.circleExt {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circleInt {
+  width: 75%;
+  height: 75%;
+  background-color: white;
+  border-radius: 50px;
+}
+.barreX,
+.circleExt {
+  background-color: transparent;
+}*/
+.Xcell,
+.Ocell {
+  cursor: not-allowed;
+}
+/* drawing the x and o + hover */
+
+/* X */
+.cell.Xcell::before,
+.cell.Xcell::after,
+#board.x .cell:not(.Xcell):not(.Ocell):hover::before,
+#board.x .cell:not(.Xcell):not(.Ocell):hover::after {
+  content: '';
+  width: 12%;
+  height: 100%;
+  border-radius: 4px;
+  background-color: red;
+  position: absolute;
+}
+.cell.Xcell::before,
+#board.x .cell:not(.Xcell):not(.Ocell):hover::before {
+  transform: rotate(45deg);
+}
+.cell.Xcell::after,
+#board.x .cell:not(.Xcell):not(.Ocell):hover::after {
+  transform: rotate(-45deg);
+}
+
+/* O */
+.cell.Ocell::before,
+.cell.Ocell::after,
+/* show the hover effect only when the cell is not selected */
+#board.o .cell:not(.Xcell):not(.Ocell):hover::before,
+#board.o .cell:not(.Xcell):not(.Ocell):hover::after {
+  content: '';
+  position: absolute;
+  border-radius: 100px;
+}
+.cell.Ocell::before,
+#board.o .cell:not(.Xcell):not(.Ocell):hover::before {
+  background-color: blue;
+  height: 90%;
+  width: 90%;
+}
+.cell.Ocell::after,
+#board.o .cell:not(.Xcell):not(.Ocell):hover::after {
+  background-color: white;
+  width: 70%;
+  height: 70%;
+}
+#board.o .cell:not(.Xcell):not(.Ocell):hover::before,
+/* #board.o .cell:not(.Xcell):not(.Ocell):hover::after,//only the outer circle */
+#board.x .cell:not(.Xcell):not(.Ocell):hover::before,
+#board.x .cell:not(.Xcell):not(.Ocell):hover::after {
+  background-color: lightgrey;
+}
